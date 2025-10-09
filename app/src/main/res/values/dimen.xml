@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_screen">30sp</dimen>
+    <dimen name="no_dimen">0dp</dimen>
+    <dimen name="log_btn_width">200dp</dimen>
+    <dimen name="radio_btn_width">300dp</dimen>
+
+    //cardView
+    <dimen name="card_view_height">460dp</dimen>
+    <dimen name="card_view_height_edit">500dp</dimen>
+    <dimen name="card_register_height">570dp</dimen>
+    <dimen name="card_profile_width">150dp</dimen>
+    <dimen name="card_profile_height">130dp</dimen>
+
+    //margin and padding
+    <dimen name="xsmall_margin">10dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="xsmall_padding">8dp</dimen>
+    <dimen name="xsmall_padding_top_bot">10dp</dimen>
+    <dimen name="large_padding_left">15dp</dimen>
+    <dimen name="xxxl_padding">90dp</dimen>
+    <dimen name="xxxsmall_elevation">3dp</dimen>
+    <dimen name="large_radius">12dp</dimen>
+    <dimen name="xxsmall_margin_layout">5dp</dimen>
+    <dimen name="medium_margin">16dp</dimen>
+    <dimen name="xxxxl_margin">180dp</dimen>
+    <dimen name="xxsmall_margin_bot">30dp</dimen>
+    <dimen name="xlarge_margin">60dp</dimen>
+    <dimen name="xbig_margin">20dp</dimen>
+    <dimen name="xxxsmall_margin_images">2dp</dimen>
+    <dimen name="xsmall_margin_image">25dp</dimen>
+    <dimen name="xxxsmall_padding">16dp</dimen>
+    <dimen name="xsmal_padding_top_bot">25dp</dimen>
+    <dimen name="xxbig_margin">55dp</dimen>
+    <dimen name="medium_padding_end">35dp</dimen>
+    <dimen name="large_padding_start">50dp</dimen>
+
+    //size
+    <dimen name="text_size_small">20sp</dimen>
+    <dimen name="txt_size_xxsmall">15sp</dimen>
+    <dimen name="splash_text_size_large">30sp</dimen>
+    <dimen name="text_size_xsmall">18sp</dimen>
+    <dimen name="text_size_large">25sp</dimen>
+    <dimen name="text_size_xxlarge">80sp</dimen>
+    <dimen name="text_size_xlarge">40sp</dimen>
+    <dimen name="text_size_middle">45sp</dimen>
+    <dimen name="text_size_xxbig">60sp</dimen>
+    <dimen name="text_size_xbig">50sp</dimen>
+    <dimen name="text_size_medium">35sp</dimen>
+
+    //image
+    <dimen name="image_height">100dp</dimen>
+    <dimen name="image_width">100dp</dimen>
+</resources>

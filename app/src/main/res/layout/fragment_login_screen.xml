@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        tools:context=".fragments.profile.LoginScreen">
+
+        <!-- Login Container -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/xsmall_margin"
+            android:foregroundGravity="center"
+            android:orientation="vertical"
+            app:cardBackgroundColor="@color/gradient_top"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="12dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/xsmall_margin"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/logTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/xsmall_margin"
+                    android:text="@string/login_in"
+                    android:textSize="@dimen/text_size_xbig"
+                    android:textStyle="bold" />
+
+                <!-- Login Username -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/logEmail"
+                    enableError=""
+                    errorText=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/medium_margin">
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_edit_text"
+                        android:drawableStart="@drawable/ic_email"
+                        android:hint="@string/email"
+                        android:inputType="text"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/large_padding_left"
+                        android:paddingTop="@dimen/xsmall_padding_top_bot"
+                        android:paddingBottom="@dimen/xsmall_padding_top_bot"
+                        tools:ignore="RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Login Password -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/logPassword"
+                    enableError=""
+                    errorText=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/no_dimen"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_edit_text"
+                        android:drawableStart="@drawable/ic_verified_user"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:maxLength="16"
+                        android:maxLines="1"
+                        android:minEms="8"
+                        android:paddingStart="@dimen/large_padding_left"
+                        android:paddingTop="@dimen/xsmall_padding_top_bot"
+                        android:paddingBottom="@dimen/xsmall_padding_top_bot"
+                        android:singleLine="true"
+                        tools:ignore="RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Remember me CheckBox -->
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remember Me"
+                    android:layout_marginTop="@dimen/small_margin"/>
+
+                <!-- Login Button -->
+                <Button
+                    android:id="@+id/logButton"
+                    android:layout_width="@dimen/log_btn_width"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/xsmall_margin"
+                    android:background="@drawable/custom_edit_text"
+                    android:text="@string/login_in" />
+
+                <!-- Register or Forgot Password Container -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xxsmall_margin_bot"
+                    android:layout_marginBottom="@dimen/xsmall_margin"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/forgotPass"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="@dimen/medium_padding_end"
+                        android:text="@string/forgot_password"
+                        android:textSize="@dimen/text_size_xsmall"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/or"
+                        android:textSize="@dimen/text_size_xsmall" />
+
+                    <TextView
+                        android:id="@+id/registerTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/large_padding_start"
+                        android:text="@string/register"
+                        android:textSize="@dimen/text_size_xsmall"
+                        tools:ignore="RtlSymmetry" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginScreen">
+
+    <!-- 📝 REGISTER -->
+    <fragment
+        android:id="@+id/registrationScreen"
+        android:name="com.example.studentmanager.fragments.profile.RegistrationScreen"
+        android:label="Registration">
+        <action
+            android:id="@+id/action_registrationScreen_to_loginScreen"
+            app:destination="@id/loginScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gradesScreen"
+        android:name="com.example.studentmanager.fragments.GradesScreen"
+        android:label="Grades"
+        tools:layout="@layout/fragment_grades_screen" />
+
+    <!-- 📚 COURSES -->
+    <fragment
+        android:id="@+id/coursesScreen"
+        android:name="com.example.studentmanager.fragments.CoursesScreen"
+        android:label="Courses"
+        tools:layout="@layout/fragment_courses_screen" />
+
+    <fragment
+        android:id="@+id/profileScreen"
+        android:name="com.example.studentmanager.fragments.profile.ProfileScreen"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile_screen" />
+
+    <!-- 🔐 LOGIN -->
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="com.example.studentmanager.fragments.profile.LoginScreen"
+        android:label="Login"
+        tools:layout="@layout/fragment_login_screen">
+        <action
+            android:id="@+id/action_loginScreen_to_registrationScreen"
+            app:destination="@id/registrationScreen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/studentsScreen"
+        android:name="com.example.studentmanager.fragments.StudentsScreen"
+        android:label="Students"
+        tools:layout="@layout/fragment_students_screen" />
+    <dialog
+        android:id="@+id/forgotPasswordDialog"
+        android:name="com.example.studentmanager.dialogs.ForgotPasswordDialog"
+        android:label="Forgot Password" />
+    <dialog
+        android:id="@+id/editStudentDialog"
+        android:name="com.example.studentmanager.dialogs.EditStudentDialog"
+        android:label="Edit Student" />
+    <dialog
+        android:id="@+id/addStudentDialog"
+        android:name="com.example.studentmanager.dialogs.AddStudentDialog"
+        android:label="Add Student" />
+</navigation>
