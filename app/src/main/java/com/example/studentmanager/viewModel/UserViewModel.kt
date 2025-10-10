@@ -84,28 +84,4 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
     fun clearError() {
         _errorMessage.value = null
     }
-
-//    // Fetch profile
-//    fun fetchUserProfile(uid: String) {
-//        firestore.collection("users").document(uid).get()
-//            .addOnSuccessListener { document ->
-//                if (document.exists()) {
-//                    _currentUser.value = document.toObject(User::class.java)
-//                } else {
-//                    _errorMessage.value = "User data not found"
-//                }
-//            }
-//            .addOnFailureListener { e ->
-//                _errorMessage.value = "Error fetching user: ${e.message}"
-//            }
-//    }
-//
-//    // Forgot Password
-//    fun sendPasswordResetEmail(email: String, callback: (Boolean, String?) -> Unit) {
-//        auth.sendPasswordResetEmail(email)
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) callback(true, null)
-//                else callback(false, task.exception?.message)
-//            }
-//    }
 }

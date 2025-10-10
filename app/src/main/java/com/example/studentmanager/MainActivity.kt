@@ -14,6 +14,7 @@ import com.example.studentmanager.databinding.MainActivityBinding
 import com.example.studentmanager.fragments.GradesScreen
 import com.example.studentmanager.fragments.CoursesScreen
 import com.example.studentmanager.fragments.StudentsScreen
+import com.example.studentmanager.fragments.profile.LoginScreen
 import com.example.studentmanager.fragments.profile.ProfileScreen
 import com.example.studentmanager.user.UserDatabase
 import com.example.studentmanager.user.UserRepository
@@ -48,19 +49,10 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         setupActionBarWithNavController(navController)
 
         observeLoginState()
-
-        setupToolbar()
-    }
-
-    private fun setupToolbar() {
-        // When profile icon clicked → open ProfileScreen
-        binding.toolbarProfileIcon.setOnClickListener {
-            replaceFragment(ProfileScreen())
-            binding.toolbarTitle.text = "Profile"
-        }
     }
 
     private fun observeLoginState() {
@@ -78,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
-     fun bottomNavigation() {
+    fun bottomNavigation() {
         binding.bottomNavigation.add(
             CurvedBottomNavigation.Model(1, "Courses", R.drawable.ic_courses)
         )
@@ -88,12 +80,20 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.add(
             CurvedBottomNavigation.Model(3, "Grades", R.drawable.ic_grades)
         )
+        binding.bottomNavigation.add(
+            CurvedBottomNavigation.Model(4, "Profile", R.drawable.ic_account)
+        )
+        binding.bottomNavigation.add(
+            CurvedBottomNavigation.Model(5, "Logout", R.drawable.ic_logout)
+        )
 
         binding.bottomNavigation.setOnClickMenuListener {
             when (it.id) {
                 1 -> replaceFragment(CoursesScreen())
                 2 -> replaceFragment(StudentsScreen())
                 3 -> replaceFragment(GradesScreen())
+                4 -> replaceFragment(ProfileScreen())
+                5 -> replaceFragment(LoginScreen())
             }
         }
 

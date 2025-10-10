@@ -1,5 +1,6 @@
 package com.example.studentmanager.fragments.profile
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -25,6 +26,10 @@ class LoginScreen : Fragment() {
         val repository = UserRepository(userDao)
         UserViewModelFactory(repository)
     }
+    private val PREFS_NAME = "user_prefs"
+    private val KEY_EMAIL = "email"
+    private val KEY_PASSWORD = "password"
+    private val KEY_REMEMBER = "remember_me"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,9 +42,9 @@ class LoginScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        observeViewModel()
-
+        loadSavedCredentials()
         buttonClickListeners()
+        observeViewModel()
     }
 
     override fun onResume() {
@@ -75,6 +80,53 @@ class LoginScreen : Fragment() {
         binding.forgotPass.setOnClickListener {
             ForgotPasswordDialog().show(parentFragmentManager, "ForgotPasswordDialog")
         }
+
+        // 🔹 If checkbox unchecked → instantly clear saved login data
+        binding.rememberMe.setOnCheckedChangeListener { _, isChecked ->
+            if (!isChecked) clearSavedCredentials()
+        }
+
+    }
+
+    private fun loadSavedCredentials() {
+        val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val remember = prefs.getBoolean(KEY_REMEMBER, false)
+        val email = prefs.getString(KEY_EMAIL, "")
+        val password = prefs.getString(KEY_PASSWORD, "")
+
+        if (remember && !email.isNullOrEmpty() && !password.isNullOrEmpty()) {
+            binding.email.setText(email)
+            binding.password.setText(password)
+            binding.rememberMe.isChecked = true
+
+            // 🔹 Auto-login immediately
+            userViewModel.loginUser(email, password)
+        } else {
+            binding.email.text.clear()
+            binding.password.text.clear()
+            binding.rememberMe.isChecked = false
+        }
+    }
+
+    private fun saveCredentialsIfNeeded(email: String, password: String) {
+        val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        val editor = prefs.edit()
+        if (binding.rememberMe.isChecked) {
+            editor.putString(KEY_EMAIL, email)
+            editor.putString(KEY_PASSWORD, password)
+            editor.putBoolean(KEY_REMEMBER, true)
+        } else {
+            editor.clear()
+        }
+        editor.apply()
+    }
+
+    private fun clearSavedCredentials() {
+        val prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+        prefs.edit().clear().apply()
+        binding.email.text.clear()
+        binding.password.text.clear()
+        showToast("Credentials cleared")
     }
 
     // ---------------------- Observers ----------------------
@@ -99,8 +151,7 @@ class LoginScreen : Fragment() {
         if (email.isEmpty()) {
             showToast("Please enter email")
             return
-        }
-        else if (password.isEmpty()) {
+        } else if (password.isEmpty()) {
             showToast("Please enter password")
             return
         }
@@ -111,6 +162,7 @@ class LoginScreen : Fragment() {
             } else if (user.password != password) {  // assuming User entity has `password` field
                 showToast("Incorrect password")
             } else {
+                saveCredentialsIfNeeded(email, password)
                 showToast("Login successful!")
                 userViewModel.setCurrentUser(user) // optional: track logged-in user in ViewModel
                 goToStudentScreen()

@@ -7,20 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
 import com.example.studentmanager.databinding.DialogForgotPasswordBinding
-import com.google.firebase.auth.FirebaseAuth
+import com.example.studentmanager.user.UserDatabase
+import com.example.studentmanager.user.UserRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ForgotPasswordDialog : DialogFragment() {
     private var _binding: DialogForgotPasswordBinding? = null
     private val binding get() = _binding!!
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = DialogForgotPasswordBinding.inflate(layoutInflater, container, false)
-        auth = FirebaseAuth.getInstance()
         return binding.root
     }
 
@@ -43,23 +46,23 @@ class ForgotPasswordDialog : DialogFragment() {
             return
         }
 
-        auth.sendPasswordResetEmail(email)
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
+        lifecycleScope.launch {
+            val dao = UserDatabase.getDatabase(requireContext()).userDao()
+            val repo = UserRepository(dao)
+            val user = withContext(Dispatchers.IO) { repo.getUserByEmail(email) }
+            withContext(Dispatchers.Main) {
+                if (user != null) {
                     Toast.makeText(
                         requireContext(),
-                        "Password reset email sent!",
-                        Toast.LENGTH_SHORT
+                        "Your password is: ${user.password}",
+                        Toast.LENGTH_LONG
                     ).show()
                     dismiss()
                 } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Error: ${task.exception?.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(requireContext(), "Email not found", Toast.LENGTH_SHORT).show()
                 }
             }
+        }
     }
 
     override fun onDestroyView() {

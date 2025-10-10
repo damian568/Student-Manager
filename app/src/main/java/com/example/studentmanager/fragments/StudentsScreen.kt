@@ -30,7 +30,7 @@ class StudentsScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentStudentsScreenBinding.inflate(inflater, container, false)
+        _binding = FragmentStudentsScreenBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 

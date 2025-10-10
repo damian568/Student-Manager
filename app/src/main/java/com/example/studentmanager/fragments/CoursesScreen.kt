@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.studentmanager.databinding.FragmentCoursesScreenBinding
 
-private lateinit var binding: FragmentCoursesScreenBinding
-
 class CoursesScreen : Fragment() {
+
+    private lateinit var binding: FragmentCoursesScreenBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

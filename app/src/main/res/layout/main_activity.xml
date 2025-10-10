@@ -13,33 +13,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/teal_700"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/navHostFragment"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <!-- Profile icon on the left -->
-            <ImageView
-                android:id="@+id/toolbarProfileIcon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_gravity="start|center_vertical"
-                android:contentDescription="@string/profile_icon"
-                android:padding="8dp"
-                android:layout_margin="@dimen/small_margin"
-                android:src="@drawable/ic_account"
-                app:tint="@android:color/white" />
-
-            <!-- Center title -->
-            <TextView
-                android:id="@+id/toolbarTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Students"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </androidx.appcompat.widget.Toolbar>
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <!-- Fragment Container -->
         <androidx.fragment.app.FragmentContainerView
@@ -48,7 +24,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:defaultNavHost="true"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:navGraph="@navigation/nav_graph"
             tools:layout_editor_absoluteX="@dimen/no_dimen" />
 
@@ -57,6 +36,7 @@
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/gradient_bottom"
             app:cbn_background="@color/black"
             app:cbn_curve_radius="26dp"
             app:cbn_fabColor="@color/purple_200"
