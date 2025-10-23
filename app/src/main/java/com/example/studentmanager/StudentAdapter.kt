@@ -3,6 +3,7 @@ package com.example.studentmanager
 import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,9 @@ import com.example.studentmanager.viewModel.StudentViewModel
 
 class StudentAdapter(
     private val context: Context,
-    private val viewModel: StudentViewModel
+    private val viewModel: StudentViewModel,
+    private val showDeleteIcon: Boolean = true,
+    private val showEditIcon: Boolean = true
 ) : RecyclerView.Adapter<StudentAdapter.StudentViewHolder>() {
 
     private val students = mutableListOf<Student>()
@@ -35,6 +38,11 @@ class StudentAdapter(
             studentCourses.text = student.course
             studentGrade.text = student.grade
             studentSpeciality.text = student.speciality
+
+            // Control delete/edit icon visibility here
+            deleteIcon.visibility = if (showDeleteIcon) View.VISIBLE else View.GONE
+            editIcon.visibility = if (showEditIcon) View.VISIBLE else View.GONE
+
 
             editIcon.setOnClickListener { showEditDialog(student) }
             deleteIcon.setOnClickListener { viewModel.deleteStudent(student) }
