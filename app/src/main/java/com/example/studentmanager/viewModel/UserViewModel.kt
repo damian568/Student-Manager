@@ -3,6 +3,7 @@ package com.example.studentmanager.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.studentmanager.user.UserRepository
 import com.example.studentmanager.data.User
@@ -13,8 +14,6 @@ import kotlinx.coroutines.withContext
 import java.util.UUID
 
 class UserViewModel(private val repository: UserRepository) : ViewModel() {
-    //private val _registrationSuccess = MutableLiveData<Boolean>()
-    //val registrationSuccess: LiveData<Boolean> get() = _registrationSuccess
 
     private val _registrationSuccess = MutableLiveData<User?>()
     val registrationSuccess: LiveData<User?> get() = _registrationSuccess
@@ -55,7 +54,7 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
             val user = User(uid = UUID.randomUUID().toString(), username = username, email = email, password = password, gender = gender)
             val success = repository.registerUser(user)
             if (success) {
-                //_currentUser.value = user
+                _currentUser.value = user
                 _registrationSuccess.value = user
             } else {
                 _errorMessage.value = "Email already registered"
@@ -77,6 +76,17 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
                     }
                 }
             }
+        }
+    }
+
+    // -- Observe user by UID (optional for ProfileScreen) --
+    fun observeUser(uid: String): LiveData<User?> {
+        return repository.getUserByUid(uid).asLiveData()
+    }
+
+    fun updateUser(updatedUser: User) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateUser(updatedUser)
         }
     }
 

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/xsmall_margin"
+            android:foregroundGravity="center"
+            android:orientation="vertical"
+            app:cardBackgroundColor="@color/gradient_top"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="12dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/xsmall_margin"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/TextEditUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/xsmall_margin"
+                    android:gravity="center"
+                    android:text="Edit User"
+                    android:textSize="@dimen/text_size_xbig"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xsmall_margin"
+                    android:layout_marginBottom="@dimen/xsmall_margin"
+                    android:background="@drawable/custom_edit_text"
+                    android:hint="username"
+                    android:paddingStart="@dimen/large_padding_left"
+                    android:paddingTop="@dimen/xsmall_padding_top_bot"
+                    android:paddingBottom="@dimen/xsmall_padding_top_bot"
+                    tools:ignore="RtlSymmetry" />
+
+                <EditText
+                    android:id="@+id/editUserEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/xsmall_margin"
+                    android:background="@drawable/custom_edit_text"
+                    android:hint="email"
+                    android:paddingStart="@dimen/large_padding_left"
+                    android:paddingTop="@dimen/xsmall_padding_top_bot"
+                    android:paddingBottom="@dimen/xsmall_padding_top_bot"
+                    tools:ignore="RtlSymmetry" />
+
+                <Spinner
+                    android:id="@+id/genderUserSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/xsmall_margin"
+                    android:background="@drawable/custom_edit_text"
+                    android:paddingStart="@dimen/large_padding_left"
+                    android:paddingTop="@dimen/xsmall_padding_top_bot"
+                    android:paddingBottom="@dimen/xsmall_padding_top_bot"
+                    tools:ignore="RtlSymmetry" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/cancelEditButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_edit_text"
+                        android:text="Cancel" />
+
+                    <Button
+                        android:id="@+id/saveEditButton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/custom_edit_text"
+                        android:text="@string/save" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

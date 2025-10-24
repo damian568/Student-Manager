@@ -24,7 +24,8 @@ import com.example.studentmanager.viewModel.UserViewModel
 import com.example.studentmanager.viewModel.UserViewModelFactory
 
 class RegistrationScreen : Fragment() {
-    private lateinit var binding: FragmentRegistrationScreenBinding
+    private var _binding: FragmentRegistrationScreenBinding? = null
+    private val binding get() = _binding!!
     private val userViewModel: UserViewModel by viewModels {
         val userDao = UserDatabase.getDatabase(requireContext()).userDao()
         val repository = UserRepository(userDao)
@@ -35,7 +36,7 @@ class RegistrationScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRegistrationScreenBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentRegistrationScreenBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -48,15 +49,6 @@ class RegistrationScreen : Fragment() {
         observeViewModel()
 
         buttonClickListeners()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        // Hide toolbar and bottom nav when on register screen
-        (activity as? MainActivity)?.apply {
-            binding.toolbar.visibility = View.GONE
-            binding.bottomNavigation.visibility = View.GONE
-        }
     }
 
     override fun onPause() {
@@ -170,7 +162,8 @@ class RegistrationScreen : Fragment() {
     }
 
     private fun goToLoginScreen() {
-        findNavController().navigate(RegistrationScreenDirections.actionRegistrationScreenToLoginScreen())
+        val action = RegistrationScreenDirections.actionRegistrationScreenToLoginScreen()
+        findNavController().navigate(action)
     }
 
     private fun goToStudentScreen() {
@@ -178,5 +171,19 @@ class RegistrationScreen : Fragment() {
         if (currentDest != R.id.studentsScreen) {
             findNavController().navigate(R.id.studentsScreen)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Hide toolbar and bottom nav when on register screen
+        (activity as? MainActivity)?.apply {
+            binding.toolbar.visibility = View.GONE
+            binding.bottomNavigation.visibility = View.GONE
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

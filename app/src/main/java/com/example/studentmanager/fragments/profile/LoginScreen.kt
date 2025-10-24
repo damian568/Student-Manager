@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.studentmanager.MainActivity
@@ -20,8 +21,9 @@ import com.example.studentmanager.viewModel.UserViewModelFactory
 
 class LoginScreen : Fragment() {
 
-    private lateinit var binding: FragmentLoginScreenBinding
-    private val userViewModel: UserViewModel by viewModels {
+    private var _binding: FragmentLoginScreenBinding? = null
+    private val binding get() = _binding!!
+    private val userViewModel: UserViewModel by activityViewModels {
         val userDao = UserDatabase.getDatabase(requireContext()).userDao()
         val repository = UserRepository(userDao)
         UserViewModelFactory(repository)
@@ -35,7 +37,7 @@ class LoginScreen : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentLoginScreenBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentLoginScreenBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -186,6 +188,10 @@ class LoginScreen : Fragment() {
     private fun goToRegistrationScreen() {
         val action = LoginScreenDirections.actionLoginScreenToRegistrationScreen()
         findNavController().navigate(action)
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
