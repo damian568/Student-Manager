@@ -1,7 +1,6 @@
 package com.example.studentmanager
 
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -16,7 +15,6 @@ import com.example.studentmanager.fragments.CoursesScreen
 import com.example.studentmanager.fragments.StudentsScreen
 import com.example.studentmanager.fragments.profile.LoginScreen
 import com.example.studentmanager.fragments.profile.ProfileScreen
-import com.example.studentmanager.fragments.profile.RegistrationScreen
 import com.example.studentmanager.user.UserDatabase
 import com.example.studentmanager.user.UserRepository
 import com.example.studentmanager.viewModel.UserViewModel

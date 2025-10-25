@@ -2,7 +2,6 @@ package com.example.studentmanager.dialogs
 
 import android.R
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,16 +9,10 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import com.example.studentmanager.data.User
 import com.example.studentmanager.databinding.DialogEditUserBinding
 import com.example.studentmanager.enums.Gender
-import com.example.studentmanager.user.UserDatabase
-import com.example.studentmanager.user.UserRepository
 import com.example.studentmanager.viewModel.UserViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlin.getValue
 
 class EditUserDialog(private val user: User): DialogFragment() {

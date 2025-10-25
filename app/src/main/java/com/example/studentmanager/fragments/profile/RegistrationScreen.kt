@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.studentmanager.R
 import com.example.studentmanager.databinding.FragmentRegistrationScreenBinding
-import com.example.studentmanager.data.User
 import com.example.studentmanager.enums.Gender
 import androidx.fragment.app.viewModels
 import com.example.studentmanager.MainActivity
