@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Student Manager</string>
+
+    <string name="profile_icon">Profile Icon</string>
+
+    //register screen
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="already_have_account">Already have account!</string>
+
+    <string name="return_text">Can\'t be empty!</string>
+    <string name="return_con_pass_text">Password Not matching!</string>
+    <string name="return_email_text">Invalid Email Address!</string>
+    <string name="field_toast">Field is required!</string>
+
+    //login screen
+    <string name="login_in">Login In</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="or">OR</string>
+
+    //students screen &amp; add student layout
+    <string name="add_student">Add Student</string>
+    <string name="add_new">Add New</string>
+
+    //courses &amp; grades screen
+    <string name="choose">Choose</string>
+
+    //edit student layout
+    <string name="save">Save</string>
+    <string name="student_speciality">Student Speciality</string>
+    <string name="student_grade">Student Grade</string>
+    <string name="student_course">Student Course</string>
+    <string name="student_email">Student Email</string>
+    <string name="student_name">Student Name</string>
+    <string name="edit_student">Edit Student</string>
+
+    //profile screen
+    <string name="grade">Grade:</string>
+    <string name="course">Course:</string>
+    <string name="speciality">Speciality:</string>
+    <string name="gender">Gender:</string>
+
+    //Forgot Password layout
+    <string name="cancel">Cancel</string>
+    <string name="send">Send</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="reset_password">Reset\n Password</string>
+
+</resources>

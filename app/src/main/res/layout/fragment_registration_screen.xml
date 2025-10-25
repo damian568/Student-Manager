@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_background"
+        tools:context=".fragments.profile.RegistrationScreen">
+
+        <!-- Register Container -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/xsmall_margin"
+            android:foregroundGravity="center"
+            android:orientation="vertical"
+            app:cardBackgroundColor="@color/gradient_top"
+            app:cardCornerRadius="25dp"
+            app:cardElevation="12dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/xsmall_margin"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/regTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/xsmall_margin"
+                    android:text="@string/register"
+                    android:textSize="@dimen/text_size_middle"
+                    android:textStyle="bold" />
+
+                <!-- Register Username -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/regUsername"
+                    enableError=""
+                    errorText=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/no_dimen">
+
+                    <EditText
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_edit_text"
+                        android:drawableStart="@drawable/ic_person"
+                        android:hint="@string/username"
+                        android:inputType="text"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/large_padding_left"
+                        android:paddingTop="@dimen/xsmall_padding_top_bot"
+                        android:paddingBottom="@dimen/xsmall_padding_top_bot"
+                        tools:ignore="RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Register Email -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/regEmail"
+                    enableError=""
+                    errorText=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/medium_margin">
+
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_edit_text"
+                        android:drawableStart="@drawable/ic_email"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="100"
+                        android:maxLines="1"
+                        android:paddingStart="@dimen/large_padding_left"
+                        android:paddingTop="@dimen/xsmall_padding_top_bot"
+                        android:paddingBottom="@dimen/xsmall_padding_top_bot"
+                        tools:ignore="RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Register Password -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/regPassword"
+                    enableError=""
+                    errorText=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/no_dimen"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_edit_text"
+                        android:drawableStart="@drawable/ic_verified_user"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:maxLength="16"
+                        android:maxLines="1"
+                        android:minEms="8"
+                        android:paddingStart="@dimen/large_padding_left"
+                        android:paddingTop="@dimen/xsmall_padding_top_bot"
+                        android:paddingBottom="@dimen/xsmall_padding_top_bot"
+                        android:singleLine="true"
+                        tools:ignore="RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Register Confirm Password -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/regConfirmPassword"
+                    enableError=""
+                    errorText=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/medium_margin"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+                        android:id="@+id/confirmPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/custom_edit_text"
+                        android:drawableStart="@drawable/ic_verified_user"
+                        android:hint="@string/confirm_password"
+                        android:inputType="textPassword"
+                        android:maxLength="16"
+                        android:maxLines="1"
+                        android:minEms="8"
+                        android:paddingStart="@dimen/large_padding_left"
+                        android:paddingTop="@dimen/xsmall_padding_top_bot"
+                        android:paddingBottom="@dimen/xsmall_padding_top_bot"
+                        android:singleLine="true"
+                        tools:ignore="RtlSymmetry" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- CheckBox Container -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:id="@+id/radioGroupGender"
+                        android:layout_width="@dimen/radio_btn_width"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <RadioButton
+                            android:id="@+id/btnRadioMan"
+                            android:layout_width="@dimen/no_dimen"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/male" />
+
+                        <RadioButton
+                            android:id="@+id/btnRadioWoman"
+                            android:layout_width="@dimen/no_dimen"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/female" />
+
+                        <RadioButton
+                            android:id="@+id/btnRadioOther"
+                            android:layout_width="@dimen/no_dimen"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:hint="@string/other" />
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <!-- Register Button -->
+                <Button
+                    android:id="@+id/regButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/xsmall_margin"
+                    android:background="@drawable/custom_edit_text"
+                    android:text="@string/register" />
+
+                <!-- Text For Login Screen -->
+                <TextView
+                    android:id="@+id/loginTxt"
+                    android:layout_marginBottom="@dimen/xsmall_margin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/already_have_account"
+                    android:textSize="@dimen/text_size_xsmall" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
